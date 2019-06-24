@@ -20,11 +20,20 @@ platform :ios do
   lane :beta do
     # build_app(scheme: "Jenkins")
     # upload_to_testflight
-    gym(
+      # pgyer(api_key: "7f15xxxxxxxxxxxxxxxxxx141", user_key: "4a5bcxxxxxxxxxxxxxxx3a9e")
+
+    # gym(
+    # 	scheme:"Jenkins",
+    # 	export_method:"ad-hoc",
+    # 	output_directory:"/Users/postop_iosdev/Desktop/iOS",
+    # 	export_xcargs: "-allowProvisioningUpdates",
+    # 	)
+    build_app(
     	scheme:"Jenkins",
     	export_method:"ad-hoc",
     	output_directory:"/Users/postop_iosdev/Desktop/iOS",
     	export_xcargs: "-allowProvisioningUpdates",
     	)
+  	pgyer(api_key: "9ba5a4e91304f6467cce8ba47c1f524e", user_key: "6bf88f666f1575479bd32d2aeb186d76")
   end
 end

@@ -1,0 +1,16 @@
+current directory: /Users/postop_iosdev/JenkinsDemo/vendor/bundle/gems/unf_ext-0.0.7.6/ext/unf_ext
+/System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/bin/ruby -r ./siteconf20190624-49318-7n42mp.rb extconf.rb
+checking for main() in -lstdc++... yes
+creating Makefile
+
+current directory: /Users/postop_iosdev/JenkinsDemo/vendor/bundle/gems/unf_ext-0.0.7.6/ext/unf_ext
+make "DESTDIR=" clean
+
+current directory: /Users/postop_iosdev/JenkinsDemo/vendor/bundle/gems/unf_ext-0.0.7.6/ext/unf_ext
+make "DESTDIR="
+compiling unf.cc
+linking shared-object unf_ext.bundle
+
+current directory: /Users/postop_iosdev/JenkinsDemo/vendor/bundle/gems/unf_ext-0.0.7.6/ext/unf_ext
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 unf_ext.bundle ./.gem.20190624-49318-peapqk

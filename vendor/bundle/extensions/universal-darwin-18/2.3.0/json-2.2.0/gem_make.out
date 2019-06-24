@@ -1,0 +1,13 @@
+current directory: /Users/postop_iosdev/JenkinsDemo/vendor/bundle/gems/json-2.2.0/ext/json
+/System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/bin/ruby -r ./siteconf20190624-49318-1dlgvt8.rb extconf.rb
+creating Makefile
+
+current directory: /Users/postop_iosdev/JenkinsDemo/vendor/bundle/gems/json-2.2.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/postop_iosdev/JenkinsDemo/vendor/bundle/gems/json-2.2.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/postop_iosdev/JenkinsDemo/vendor/bundle/gems/json-2.2.0/ext/json
+make "DESTDIR=" install
