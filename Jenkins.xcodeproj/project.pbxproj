@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		0376AE6022C1BA5E008D06E6 /* OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0376AE6122C1BA5E008D06E6 /* Build configuration list for PBXAggregateTarget "OCLint" */;
+			buildPhases = (
+				0376AE6422C1BA72008D06E6 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = OCLint;
+			productName = OCLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		0376AE1422B34D40008D06E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0376AE1322B34D40008D06E6 /* AppDelegate.m */; };
 		0376AE1722B34D40008D06E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0376AE1622B34D40008D06E6 /* ViewController.m */; };
@@ -15,6 +29,7 @@
 		0376AE2222B34D41008D06E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0376AE2122B34D41008D06E6 /* main.m */; };
 		0376AE2C22B34D41008D06E6 /* JenkinsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0376AE2B22B34D41008D06E6 /* JenkinsTests.m */; };
 		0376AE3722B34D41008D06E6 /* JenkinsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0376AE3622B34D41008D06E6 /* JenkinsUITests.m */; };
+		0376AE6722C1BD2A008D06E6 /* oclint.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0376AE6622C1BD2A008D06E6 /* oclint.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +66,7 @@
 		0376AE3222B34D41008D06E6 /* JenkinsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JenkinsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0376AE3622B34D41008D06E6 /* JenkinsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JenkinsUITests.m; sourceTree = "<group>"; };
 		0376AE3822B34D41008D06E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0376AE6622C1BD2A008D06E6 /* oclint.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = oclint.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +97,7 @@
 		0376AE0622B34D40008D06E6 = {
 			isa = PBXGroup;
 			children = (
+				0376AE6622C1BD2A008D06E6 /* oclint.sh */,
 				0376AE1122B34D40008D06E6 /* Jenkins */,
 				0376AE2A22B34D41008D06E6 /* JenkinsTests */,
 				0376AE3522B34D41008D06E6 /* JenkinsUITests */,
@@ -209,6 +226,9 @@
 						CreatedOnToolsVersion = 10.2.1;
 						TestTargetID = 0376AE0E22B34D40008D06E6;
 					};
+					0376AE6022C1BA5E008D06E6 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 0376AE0A22B34D40008D06E6 /* Build configuration list for PBXProject "Jenkins" */;
@@ -227,6 +247,7 @@
 				0376AE0E22B34D40008D06E6 /* Jenkins */,
 				0376AE2622B34D41008D06E6 /* JenkinsTests */,
 				0376AE3122B34D41008D06E6 /* JenkinsUITests */,
+				0376AE6022C1BA5E008D06E6 /* OCLint */,
 			);
 		};
 /* End PBXProject section */
@@ -239,6 +260,7 @@
 				0376AE1F22B34D41008D06E6 /* LaunchScreen.storyboard in Resources */,
 				0376AE1C22B34D41008D06E6 /* Assets.xcassets in Resources */,
 				0376AE1A22B34D40008D06E6 /* Main.storyboard in Resources */,
+				0376AE6722C1BD2A008D06E6 /* oclint.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +298,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#if [ \"Release\" == \"${CONFIGURATION}\" ];then\nbuildNumber=$(date +%Y%m%d%H%M%S)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n#fi\n\n#最后一次提交的SHA\ngit_sha=$(git rev-parse HEAD)\n\n#当前的分支\ngit_branch=$(git symbolic-ref --short -q HEAD)\n\n#最后一次提交的作者\ngit_last_commit_user=$(git log -1 --pretty=format:'%an')\n\n#最后一次提交的时间\ngit_last_commit_date=$(git log -1 --format='%cd')\n\n#获取App安装包下的info.plist文件路径\ninfo_plist=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Info.plist\"\n\n#/usr/libexec/PlistBuddy -c \"Add :GitLastCommitAbbreviatedHash string ${gitLastCommitAbbreviatedHash}\" ${buildInfoPlist}\n/usr/libexec/PlistBuddy -c 'Add :HELLO string hahahah' info.plist\n\n/usr/libexec/PlistBuddy -c \"Set :GitCommitBranch ${git_branch}\" \"$INFOPLIST_FILE\"\n\n#利用PlistBuddy改变info.plist的值\n/usr/libexec/PlistBuddy -c \"Set :'GitCommitSHA'       '${git_sha}'\"                \"${info_plist}\"\n/usr/libexec/PlistBuddy -c \"Set :'GitCommitBranch'    '${git_branch}'\"                 \"${info_plist}\"\n/usr/libexec/PlistBuddy -c \"Set :'GitCommitUser'      ${git_last_commit_user}\"       \"${info_plist}\"\n/usr/libexec/PlistBuddy -c \"Set :'GitCommitDate'      '${git_last_commit_date}'\"       \"${info_plist}\"\n";
+		};
+		0376AE6422C1BA72008D06E6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash ./oclint.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -561,6 +600,22 @@
 			};
 			name = Release;
 		};
+		0376AE6222C1BA5E008D06E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0376AE6322C1BA5E008D06E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -596,6 +651,15 @@
 			buildConfigurations = (
 				0376AE4222B34D41008D06E6 /* Debug */,
 				0376AE4322B34D41008D06E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0376AE6122C1BA5E008D06E6 /* Build configuration list for PBXAggregateTarget "OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0376AE6222C1BA5E008D06E6 /* Debug */,
+				0376AE6322C1BA5E008D06E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
